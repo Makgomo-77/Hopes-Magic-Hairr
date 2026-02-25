@@ -778,6 +778,14 @@
   }
 
   // ── Gallery filter ──
+
+const myCarousel = document.querySelector('#galleryCarousel');
+const carousel = new bootstrap.Carousel(myCarousel, {
+  interval: 3500,
+  pause: 'hover',
+  touch: true
+});
+
   document.querySelectorAll('.filter-btn').forEach(btn => {
     btn.addEventListener('click', () => {
       document.querySelectorAll('.filter-btn').forEach(b => b.classList.remove('active'));
