@@ -278,34 +278,50 @@
     .g-bg-4 { background: linear-gradient(135deg, #2a2a1a 0%, #3d3d1f 100%); }
     .g-bg-5 { background: linear-gradient(135deg, #2a1a2a 0%, #3a1f3d 100%); }
     .g-bg-6 { background: linear-gradient(135deg, #1a2a2a 0%, #1f3a3d 100%); }
+/* Smooth carousel */
+.carousel-item {
+  transition: transform 0.8s ease-in-out, opacity 0.8s ease-in-out;
+}
 
-    /* ── STYLISTS ── */
-    #stylists { background: var(--dark); padding: 6rem 0; }
-    .stylist-card {
-      text-align: center;
-      padding: 2.5rem 1.5rem;
-      background: var(--dark3);
-      border: 1px solid rgba(232,160,176,0.1);
-      transition: border-color 0.3s;
-      height: 100%;
-    }
-    .stylist-card:hover { border-color: var(--pink-deep); }
-    .stylist-avatar {
-      width: 100px;
-      height: 100px;
-      border-radius: 50%;
-      background: linear-gradient(135deg, var(--pink-deep), var(--pink-light));
-      margin: 0 auto 1.5rem;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      font-size: 2.5rem;
-      color: var(--dark);
-      border: 3px solid rgba(232,160,176,0.2);
-    }
-    .stylist-name { font-size: 1.2rem; margin-bottom: 0.3rem; }
-    .stylist-role { color: var(--pink); font-size: 0.8rem; letter-spacing: 1.5px; text-transform: uppercase; margin-bottom: 0.8rem; }
-    .stylist-bio { color: var(--text-muted); font-size: 0.88rem; line-height: 1.7; }
+.carousel img {
+  height: 450px;
+  object-fit: cover;
+  transition: transform 0.5s ease;
+}
+
+.carousel img:hover {
+  transform: scale(1.05);
+}
+
+/* Price glow animation */
+.price-glow {
+  color: var(--pink);
+  font-weight: bold;
+  animation: glow 2s infinite alternate;
+}
+
+@keyframes glow {
+  from { text-shadow: 0 0 5px #ff4da6; }
+  to { text-shadow: 0 0 20px #ff4da6; }
+}
+
+/* Book button styling */
+.book-btn {
+  transition: all 0.3s ease;
+}
+
+.book-btn:hover {
+  background-color: var(--pink);
+  border: none;
+  transform: translateY(-3px);
+}
+
+/* White arrows */
+.carousel-control-prev-icon,
+.carousel-control-next-icon {
+  filter: invert(1);
+}
+
 
     /* ── BOOKING ── */
     #booking { background: var(--dark2); padding: 6rem 0; }
@@ -338,29 +354,7 @@
     }
     .form-select option { background: var(--dark3); }
 
-    /* ── TESTIMONIALS ── */
-    #testimonials { background: var(--dark); padding: 6rem 0; }
-    .testimonial-card {
-      background: var(--dark3);
-      border: 1px solid rgba(232,160,176,0.1);
-      padding: 2rem;
-      height: 100%;
-      position: relative;
-    }
-    .testimonial-card::before {
-      content: '"';
-      font-family: 'Playfair Display', serif;
-      font-size: 5rem;
-      color: var(--pink-deep);
-      opacity: 0.3;
-      position: absolute;
-      top: -0.5rem;
-      left: 1.5rem;
-      line-height: 1;
-    }
-    .testimonial-text { color: var(--text-muted); line-height: 1.8; margin-bottom: 1.5rem; font-style: italic; }
-    .testimonial-name { color: var(--white); font-size: 0.9rem; font-weight: 500; }
-    .testimonial-stars { color: var(--pink); font-size: 0.9rem; margin-bottom: 0.3rem; }
+    
 
     /* ── CONTACT ── */
     #contact { background: var(--dark2); padding: 6rem 0; }
@@ -369,34 +363,7 @@
       align-items: flex-start;
       gap: 1.2rem;
       margin-bottom: 2rem;
-    }
-    .contact-icon {
-      width: 48px;
-      height: 48px;
-      background: rgba(201,99,122,0.15);
-      border: 1px solid rgba(201,99,122,0.3);
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      color: var(--pink);
-      font-size: 1.1rem;
-      flex-shrink: 0;
-    }
-    .contact-info-item h6 { color: var(--pink-light); font-size: 0.75rem; letter-spacing: 1.5px; text-transform: uppercase; margin-bottom: 0.3rem; }
-    .contact-info-item p { color: var(--text-muted); margin: 0; font-size: 0.9rem; line-height: 1.6; }
-    .social-links a {
-      display: inline-flex;
-      width: 40px;
-      height: 40px;
-      align-items: center;
-      justify-content: center;
-      border: 1px solid rgba(232,160,176,0.3);
-      color: var(--pink);
-      margin-right: 0.5rem;
-      transition: all 0.3s;
-      text-decoration: none;
-    }
-    .social-links a:hover { background: var(--pink-deep); border-color: var(--pink-deep); color: var(--white); }
+
 
     /* ── FOOTER ── */
     footer {
@@ -445,7 +412,7 @@
 <!-- NAVBAR -->
 <nav class="navbar navbar-expand-lg sticky-top">
   <div class="container">
-    <a class="navbar-brand" href="#" onclick="showSection('home')">Hope's Magic Hairr<span>our</span></a>
+    <a class="navbar-brand" href="#" onclick="showSection('home')">Hope's Magic Hairr</a>
     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navMenu">
       <span class="navbar-toggler-icon"></span>
     </button>
