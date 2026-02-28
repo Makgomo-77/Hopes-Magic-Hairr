@@ -846,7 +846,6 @@ bookingForm.addEventListener("submit", function (e) {
 
   const firstName = document.getElementById("firstName").value;
   const lastName = document.getElementById("lastName").value;
-  const email = document.getElementById("email").value;
   const phone = document.getElementById("phone").value;
   const service = document.getElementById("service").value;
   const date = document.getElementById("date").value;
@@ -865,7 +864,7 @@ bookingForm.addEventListener("submit", function (e) {
 Thank you!
   `;
 
-  const whatsappNumber = "277284562814"; // ← PUT YOUR NUMBER HERE
+  const whatsappNumber = "27728562814"; // ← PUT YOUR NUMBER HERE
 
   const whatsappURL = `https://wa.me/${whatsappNumber}?text=${encodeURIComponent(message)}`;
 
