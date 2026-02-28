@@ -531,7 +531,7 @@
           <div class="card gallery-card border-0 shadow-lg">
             <div class="row g-0 align-items-center">
               <div class="col-md-6">
-                <img src="images/1.jpg" class="img-fluid rounded-start" alt="Braided Ponytail">
+                <img src="images/2.jpg" class="img-fluid rounded-start" alt="Braided Ponytail">
               </div>
               <div class="col-md-6">
                 <div class="card-body p-5">
@@ -656,6 +656,50 @@
 
       </div>
 <p> For hairstyles not mentioned above ,please use the <em>book now</em> feature!!!!</p>
+<!-- ══════════ REVIEWS SECTION ══════════ -->
+<section id="reviews" class="page-section bg-light py-5">
+  <div class="container">
+    
+    <div class="text-center mb-5">
+      <h2 class="section-heading">Customer <span style="color:var(--pink)">Reviews</span></h2>
+      <div class="section-line"></div>
+    </div>
+
+    <!-- Review Form -->
+    <div class="card shadow p-4 mb-5">
+      <h5 class="mb-3">Leave a Review</h5>
+
+      <form id="reviewForm">
+        <div class="mb-3">
+          <input type="text" id="reviewName" class="form-control" placeholder="Your Name" required>
+        </div>
+
+        <div class="mb-3">
+          <textarea id="reviewText" class="form-control" rows="3" placeholder="Write your review..." required></textarea>
+        </div>
+
+        <!-- Star Rating -->
+        <div class="mb-3">
+          <label class="form-label">Rating:</label>
+          <div class="star-rating">
+            <span data-value="1">★</span>
+            <span data-value="2">★</span>
+            <span data-value="3">★</span>
+            <span data-value="4">★</span>
+            <span data-value="5">★</span>
+          </div>
+        </div>
+
+        <button type="submit" class="btn btn-dark">Submit Review</button>
+      </form>
+    </div>
+
+    <!-- Display Reviews -->
+    <div id="reviewsContainer" class="row g-4">
+    </div>
+
+  </div>
+</section>
 
       <!-- Controls -->
       <button class="carousel-control-prev" type="button" data-bs-target="#galleryCarousel" data-bs-slide="prev">
@@ -790,6 +834,7 @@
     </div>
   </div>
 </section>
+
 
 <!-- FOOTER -->
 <footer>
