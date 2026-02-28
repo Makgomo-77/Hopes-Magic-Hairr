@@ -321,6 +321,33 @@
 .carousel-control-next-icon {
   filter: invert(1);
 }
+/* Star rating styling */
+.star-rating span {
+  font-size: 1.8rem;
+  cursor: pointer;
+  color: #ccc;
+  transition: 0.3s;
+}
+
+.star-rating span.active,
+.star-rating span:hover,
+.star-rating span:hover ~ span {
+  color: gold;
+}
+
+/* Review card */
+.review-card {
+  border-radius: 12px;
+  padding: 20px;
+  background: white;
+  box-shadow: 0 5px 15px rgba(0,0,0,0.08);
+}
+
+.review-stars {
+  color: gold;
+  font-size: 1.2rem;
+}
+
 
 
     /* ── BOOKING ── */
@@ -883,6 +910,7 @@ const carousel = new bootstrap.Carousel(myCarousel, {
     });
   });
 
+
   // ── Set min date for booking ──
   const dateInput = document.getElementById('bookDate');
   if (dateInput) {
@@ -925,6 +953,73 @@ const carousel = new bootstrap.Carousel(myCarousel, {
 
   // ── Blog tips mini page (accessed via nav or home) ──
   // 
+
+let selectedRating = 0;
+
+const stars = document.querySelectorAll('.star-rating span');
+const reviewForm = document.getElementById('reviewForm');
+const reviewsContainer = document.getElementById('reviewsContainer');
+
+// Star selection
+stars.forEach(star => {
+  star.addEventListener('click', () => {
+    selectedRating = star.getAttribute('data-value');
+    stars.forEach(s => s.classList.remove('active'));
+    for (let i = 0; i < selectedRating; i++) {
+      stars[i].classList.add('active');
+    }
+  });
+});
+
+// Load saved reviews
+document.addEventListener('DOMContentLoaded', loadReviews);
+
+reviewForm.addEventListener('submit', function(e) {
+  e.preventDefault();
+
+  const name = document.getElementById('reviewName').value;
+  const text = document.getElementById('reviewText').value;
+
+  if (selectedRating === 0) {
+    alert("Please select a rating");
+    return;
+  }
+
+  const review = { name, text, rating: selectedRating };
+
+  saveReview(review);
+  addReviewToPage(review);
+
+  reviewForm.reset();
+  selectedRating = 0;
+  stars.forEach(s => s.classList.remove('active'));
+});
+
+function saveReview(review) {
+  let reviews = JSON.parse(localStorage.getItem('reviews')) || [];
+  reviews.push(review);
+  localStorage.setItem('reviews', JSON.stringify(reviews));
+}
+
+function loadReviews() {
+  let reviews = JSON.parse(localStorage.getItem('reviews')) || [];
+  reviews.forEach(addReviewToPage);
+}
+
+function addReviewToPage(review) {
+  const col = document.createElement('div');
+  col.className = "col-md-6";
+
+  col.innerHTML = `
+    <div class="review-card">
+      <h6>${review.name}</h6>
+      <div class="review-stars">${'★'.repeat(review.rating)}</div>
+      <p class="mt-2">${review.text}</p>
+    </div>
+  `;
+
+  reviewsContainer.appendChild(col);
+}
 </script>
 </body>
 </html>
