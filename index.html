@@ -838,40 +838,39 @@ const carousel = new bootstrap.Carousel(myCarousel, {
   }
 
   // ── Booking submit ──
-  function submitBooking() {
-    const fn = document.getElementById('firstName').value.trim();
-    const ln = document.getElementById('lastName').value.trim();
-    const em = document.getElementById('email').value.trim();
-    const sv = document.getElementById('service').value;
-    const dt = document.getElementById('bookDate').value;
-    const tm = document.getElementById('bookTime').value;
-    const alert = document.getElementById('bookingAlert');
+ 
+const bookingForm = document.getElementById("bookingForm");
 
-    if (!fn || !ln || !em || !sv || !dt || !tm) {
-      alert.className = 'alert alert-danger';
-      alert.style.display = 'block';
-      alert.textContent = 'Please fill in all required fields.';
-      alert.scrollIntoView({ behavior: 'smooth', block: 'center' });
-      return;
-    }
+bookingForm.addEventListener("submit", function (e) {
+  e.preventDefault();
 
-    alert.className = 'alert';
-    alert.style.background = 'rgba(201,99,122,0.15)';
-    alert.style.border = '1px solid var(--pink-deep)';
-    alert.style.color = 'var(--pink-light)';
-    alert.style.display = 'block';
-    alert.innerHTML = `✦ Appointment confirmed for <strong>${fn} ${ln}</strong> — <strong>${sv}</strong> on <strong>${dt}</strong> at <strong>${tm}</strong>. We'll send a confirmation to ${em}. See you soon!`;
-    alert.scrollIntoView({ behavior: 'smooth', block: 'center' });
+  const firstName = document.getElementById("firstName").value;
+  const lastName = document.getElementById("lastName").value;
+  const email = document.getElementById("email").value;
+  const phone = document.getElementById("phone").value;
+  const service = document.getElementById("service").value;
+  const date = document.getElementById("date").value;
+  const time = document.getElementById("time").value;
 
-    // Clear form
-    ['firstName','lastName','email','phone','service','stylist','bookDate','bookTime','notes'].forEach(id => {
-      const el = document.getElementById(id);
-      if (el) el.value = '';
-    });
-  }
+  const message = `
+🌸 *New Hair Appointment Booking* 🌸
 
-  // ── Blog tips mini page (accessed via nav or home) ──
-  // 
+👤 Name: ${firstName} ${lastName}
+📧 Email: ${email}
+📞 Phone: ${phone}
+💇 Service: ${service}
+📅 Date: ${date}
+⏰ Time: ${time}
+
+Thank you!
+  `;
+
+  const whatsappNumber = "277284562814"; // ← PUT YOUR NUMBER HERE
+
+  const whatsappURL = `https://wa.me/${whatsappNumber}?text=${encodeURIComponent(message)}`;
+
+  window.open(whatsappURL, "_blank");
+});
 
 let selectedRating = 0;
 
