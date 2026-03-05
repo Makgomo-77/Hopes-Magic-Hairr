@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>Hope's Magic Hairr</title>
+  <title>Hope's Magic Hair</title>
   <link href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.2/css/bootstrap.min.css" rel="stylesheet"/>
   <link href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-icons/1.11.3/font/bootstrap-icons.min.css" rel="stylesheet"/>
   <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;1,400&family=Jost:wght@300;400;500&display=swap" rel="stylesheet"/>
@@ -31,7 +31,7 @@
 
     h1, h2, h3, h4 { font-family: 'Playfair Display', serif; }
 
-    /* ── NAV ── */
+    /* NAV */
     .navbar {
       background: rgba(17,17,17,0.95);
       backdrop-filter: blur(12px);
@@ -57,11 +57,11 @@
     .navbar-toggler { border-color: var(--pink); }
     .navbar-toggler-icon { filter: invert(1); }
 
-    /* ── SECTIONS ── */
+    /* SECTIONS */
     .page-section { display: none; }
     .page-section.active { display: block; }
 
-    /* ── HERO ── */
+    /* HERO */
     #home {
       min-height: 100vh;
       background:
@@ -147,7 +147,7 @@
       z-index: 1;
     }
 
-    /* ── SECTION HEADING ── */
+    /* SECTION HEADING */
     .section-heading {
       font-size: clamp(2rem, 4vw, 3rem);
       margin-bottom: 0.5rem;
@@ -159,7 +159,7 @@
       margin: 1rem auto 3rem;
     }
 
-    /* ── ABOUT ── */
+    /* ABOUT */
     #about { background: var(--dark2); padding: 6rem 0; }
     .about-stat {
       border-left: 2px solid var(--pink-deep);
@@ -169,7 +169,7 @@
     .about-stat h3 { color: var(--pink); font-size: 2.5rem; }
     .about-stat p { color: var(--text-muted); font-size: 0.85rem; letter-spacing: 1px; text-transform: uppercase; }
 
-    /* ── SERVICES ── */
+    /* SERVICES */
     #services { background: var(--dark); padding: 6rem 0; }
     .service-card {
       background: var(--dark3);
@@ -210,147 +210,43 @@
       letter-spacing: 1px;
     }
 
-    /* ── GALLERY ── */
+    /* GALLERY */
     #gallery { background: var(--dark2); padding: 6rem 0; }
-    .gallery-filter { margin-bottom: 2.5rem; }
-    .filter-btn {
-      background: transparent;
-      border: 1px solid rgba(232,160,176,0.3);
+    .gallery-img {
+      width: 100%;
+      height: 280px;
+      object-fit: cover;
+      border-radius: 8px;
+      transition: transform 0.3s ease;
+      cursor: pointer;
+      margin-bottom: 15px;
+    }
+    .gallery-img:hover {
+      transform: scale(1.03);
+      box-shadow: 0 10px 30px rgba(201,99,122,0.4);
+    }
+
+    /* REVIEWS */
+    #reviews { background: var(--dark2); padding: 6rem 0; }
+    .star-rating span {
+      font-size: 1.8rem;
+      cursor: pointer;
       color: var(--text-muted);
-      padding: 0.4rem 1.2rem;
-      font-size: 0.8rem;
-      letter-spacing: 1.5px;
-      text-transform: uppercase;
-      margin: 0.25rem;
-      transition: all 0.3s;
-      border-radius: 0;
+      transition: 0.3s;
     }
-    .filter-btn:hover, .filter-btn.active {
-      background: var(--pink-deep);
-      border-color: var(--pink-deep);
-      color: var(--white);
-    }
-    .gallery-card {
+    .star-rating span.active { color: gold; }
+    .review-card {
       background: var(--dark3);
-      border: 1px solid rgba(232,160,176,0.08);
-      border-radius: 0;
-      overflow: hidden;
-      transition: transform 0.3s, box-shadow 0.3s;
-      height: 100%;
+      border-radius: 12px;
+      padding: 20px;
+      margin-bottom: 20px;
+      border: 1px solid rgba(232,160,176,0.1);
     }
-    .gallery-card:hover {
-      transform: translateY(-6px);
-      box-shadow: 0 20px 60px rgba(201,99,122,0.2);
-    }
-    .gallery-card .card-img-placeholder {
-      height: 220px;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      font-size: 4rem;
-      position: relative;
-      overflow: hidden;
-    }
-    .gallery-card .card-body { padding: 1.2rem 1.5rem; background: var(--dark3); }
-    .gallery-card .card-title {
-      font-family: 'Playfair Display', serif;
-      color: var(--white);
-      font-size: 1rem;
-      margin-bottom: 0.3rem;
-    }
-    .gallery-card .card-text { color: var(--text-muted); font-size: 0.82rem; }
-    .gallery-badge {
-      position: absolute;
-      top: 12px;
-      right: 12px;
-      background: rgba(201,99,122,0.9);
-      color: var(--white);
-      font-size: 0.7rem;
-      letter-spacing: 1px;
-      padding: 0.25rem 0.6rem;
-      text-transform: uppercase;
-    }
+    .review-card h6 { color: var(--pink); margin-bottom: 8px; }
+    .review-stars { color: gold; font-size: 1.1rem; margin-bottom: 10px; }
+    .review-card p { color: var(--text-muted); }
 
-    /* gallery color backgrounds */
-    .g-bg-1 { background: linear-gradient(135deg, #2a1a1e 0%, #3d1f28 100%); }
-    .g-bg-2 { background: linear-gradient(135deg, #1a1a2a 0%, #2a1f3d 100%); }
-    .g-bg-3 { background: linear-gradient(135deg, #1a2a1a 0%, #1f3d2a 100%); }
-    .g-bg-4 { background: linear-gradient(135deg, #2a2a1a 0%, #3d3d1f 100%); }
-    .g-bg-5 { background: linear-gradient(135deg, #2a1a2a 0%, #3a1f3d 100%); }
-    .g-bg-6 { background: linear-gradient(135deg, #1a2a2a 0%, #1f3a3d 100%); }
-/* Smooth carousel */
-.carousel-item {
-  transition: transform 0.8s ease-in-out, opacity 0.8s ease-in-out;
-}
-
-.carousel img {
-  height: 450px;
-  object-fit: cover;
-  transition: transform 0.5s ease;
-}
-
-.carousel img:hover {
-  transform: scale(1.05);
-}
-
-/* Price glow animation */
-.price-glow {
-  color: var(--dark);
-  font-weight: bold;
-  animation: glow 2s infinite alternate;
-}
-
-@keyframes glow {
-  from { text-shadow: 0 0 5px #ff4da6; }
-  to { text-shadow: 0 0 20px #ff4da6; }
-}
-
-/* Book button styling */
-.book-btn {
-  transition: all 0.3s ease;
-}
-
-.book-btn:hover {
-  background-color: var(--pink);
-  border: none;
-  transform: translateY(-3px);
-}
-
-/* White arrows */
-.carousel-control-prev-icon,
-.carousel-control-next-icon {
-  filter: invert(1);
-}
-/* Star rating styling */
-.star-rating span {
-  font-size: 1.8rem;
-  cursor: pointer;
-  color: pink;
-  transition: 0.3s;
-}
-
-.star-rating span.active,
-.star-rating span:hover,
-.star-rating span:hover ~ span {
-  color: gold;
-}
-
-/* Review card */
-.review-card {
-  border-radius: 12px;
-  padding: 20px;
-  background: white;
-  box-shadow: 0 5px 15px rgba(0,0,0,0.08);
-}
-
-.review-stars {
-  color: gold;
-  font-size: 1.2rem;
-}
-
-
-
-    /* ── BOOKING ── */
+    /* BOOKING */
     #booking { background: var(--dark2); padding: 6rem 0; }
     .booking-form-wrap {
       background: var(--dark3);
@@ -363,7 +259,6 @@
       color: var(--white);
       border-radius: 0;
       padding: 0.75rem 1rem;
-      font-family: 'Jost', sans-serif;
     }
     .form-control:focus, .form-select:focus {
       background: var(--dark);
@@ -379,20 +274,40 @@
       text-transform: uppercase;
       margin-bottom: 0.5rem;
     }
-    .form-select option { background: var(--dark3); }
 
-    
-
-    /* ── CONTACT ── */
+    /* CONTACT */
     #contact { background: var(--dark2); padding: 6rem 0; }
     .contact-info-item {
       display: flex;
       align-items: flex-start;
       gap: 1.2rem;
       margin-bottom: 2rem;
+    }
+    .contact-icon {
+      font-size: 1.5rem;
+      color: var(--pink);
+    }
+    .contact-info-item h6 {
+      font-family: 'Playfair Display', serif;
+      color: var(--white);
+      margin-bottom: 0.3rem;
+    }
+    .contact-info-item p {
+      color: var(--text-muted);
+      margin-bottom: 0;
+    }
+    .social-links {
+      display: flex;
+      gap: 1rem;
+    }
+    .social-links a {
+      color: var(--text-muted);
+      font-size: 1.5rem;
+      transition: color 0.3s;
+    }
+    .social-links a:hover { color: var(--pink); }
 
-
-    /* ── FOOTER ── */
+    /* FOOTER */
     footer {
       background: #0a0a0a;
       border-top: 1px solid rgba(232,160,176,0.1);
@@ -404,7 +319,7 @@
     }
     footer span { color: var(--pink); }
 
-    /* ── MISC ── */
+    /* MISC */
     .pink-text { color: var(--pink); }
     .text-muted-custom { color: var(--text-muted); }
     .fade-in { animation: fadeUp 0.6s ease both; }
@@ -434,12 +349,12 @@
 <body>
 
 <!-- Offer Strip -->
-<div class="offer-strip">✦ 20% Off First Visit — Book Now &amp; Glow ✦</div>
+<div class="offer-strip">✦ 20% Off First Visit — Book Now & Glow ✦</div>
 
 <!-- NAVBAR -->
 <nav class="navbar navbar-expand-lg sticky-top">
   <div class="container">
-    <a class="navbar-brand" href="#" onclick="showSection('home')">Hope's Magic Hairr</a>
+    <a class="navbar-brand" href="#" onclick="showSection('home')">Hope's Magic Hair</a>
     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navMenu">
       <span class="navbar-toggler-icon"></span>
     </button>
@@ -448,7 +363,7 @@
         <li class="nav-item"><a class="nav-link active" href="#" onclick="showSection('home')">Home</a></li>
         <li class="nav-item"><a class="nav-link" href="#" onclick="showSection('services')">Services</a></li>
         <li class="nav-item"><a class="nav-link" href="#" onclick="showSection('gallery')">Gallery</a></li>
- <li class="nav-item"><a class="nav-link" href="#" onclick="showSection('reviews')">Reviews</a></li>
+        <li class="nav-item"><a class="nav-link" href="#" onclick="showSection('reviews')">Reviews</a></li>
         <li class="nav-item"><a class="nav-link" href="#" onclick="showSection('contact')">Contact</a></li>
         <li class="nav-item ms-lg-3">
           <a class="btn btn-pink" href="#" onclick="showSection('booking')">Book Now</a>
@@ -458,12 +373,12 @@
   </div>
 </nav>
 
-<!-- ══════════ HOME ══════════ -->
+<!-- HOME -->
 <section id="home" class="page-section active">
   <div class="container">
     <div class="row align-items-center" style="min-height:calc(100vh - 80px)">
       <div class="col-lg-7 fade-in">
-        <p class="hero-label"> Premier Hair & Beauty Studio</p>
+        <p class="hero-label">Premier Hair & Beauty Studio</p>
         <h1 class="hero-title">
           Where Beauty<br>
           <em>Transforms</em>
@@ -487,22 +402,17 @@
               <p>Happy Clients</p>
             </div>
           </div>
-       
-          </div>
         </div>
       </div>
       <div class="col-lg-5 d-none d-lg-flex justify-content-center hero-deco">
         <div class="hero-circle"></div>
-        <div class="hero-graduation gown"></div>
-        <i class="bi bi-knotless braids hero-icon-big"></i>
+        <i class="bi bi-stars hero-icon-big"></i>
       </div>
     </div>
   </div>
 </section>
 
-
-
-<!-- ══════════ SERVICES ══════════ -->
+<!-- SERVICES -->
 <section id="services" class="page-section">
   <div class="container">
     <div class="text-center">
@@ -513,30 +423,33 @@
     <div class="row g-4">
       <div class="col-md-6 col-lg-4">
         <div class="service-card">
-          <div class="service-icon"><i class="bi bi-braids"></i></div>
-          <h5>Hair installation and Braids</h5>
-          <p>braids tailored to your face shape and lifestyle — from classic knotless to boho braids.</p>
+          <div class="service-icon"><i class="bi bi-scissors"></i></div>
+          <h5>Hair Installation & Braids</h5>
+          <p>Braids tailored to your face shape and lifestyle — from classic knotless to boho braids.</p>
           <p class="service-price">From R450</p>
         </div>
       </div>
       <div class="col-md-6 col-lg-4">
         <div class="service-card">
           <div class="service-icon"><i class="bi bi-palette"></i></div>
-          
-          <p>frontals, boho braids, vivid colour, executed with expert technique.</p>
+          <h5>Color & Styling</h5>
+          <p>Frontals, boho braids, vivid color, executed with expert technique.</p>
           <p class="service-price">From R200</p>
         </div>
       </div>
-     
       <div class="col-md-6 col-lg-4">
         <div class="service-card">
-          <div class="service-icon"><i class="bi bi-brilliance"></i></div>
+          <div class="service-icon"><i class="bi bi-stars"></i></div>
           <h5>Makeup Artistry</h5>
           <p>Full glam, graduation, editorial, and everyday looks — I enhance your natural beauty.</p>
           <p class="service-price">From R260</p>
         </div>
       </div>
-<!-- ══════════ PREMIUM GALLERY ══════════ -->
+    </div>
+  </div>
+</section>
+
+<!-- GALLERY -->
 <section id="gallery" class="page-section">
   <div class="container">
     <div class="text-center">
@@ -544,81 +457,60 @@
       <h2 class="section-heading">Hair <em style="color:var(--pink)">Gallery</em></h2>
       <div class="section-line"></div>
     </div>
-      
-  <h3 class="text-white mt-5"> Boho Braids</h3>
-<div class="row g-4">
-
-  <div class="col-md-3">
-    <img src="images/Boho braids.jpg" class="img-fluid gallery-img"
-         data-style="Boho Braids">
+    
+    <h3 class="text-white mt-5">Boho Braids</h3>
+    <div class="row g-4">
+      <div class="col-md-3">
+        <img src="images/Boho braids.jpg" class="img-fluid gallery-img" alt="Boho Braids" data-style="Boho Braids">
+      </div>
+      <div class="col-md-3">
+        <img src="images/boho.jpg" class="img-fluid gallery-img" alt="Buss Down Boho Braids" data-style="Buss Down Boho Braids">
+      </div>
+      <div class="col-md-3">
+        <img src="images/Short boho.jpg" class="img-fluid gallery-img" alt="Short Boho Braids" data-style="Short Boho Braids">
+      </div>
+      <div class="col-md-3">
+        <img src="images/short boho(2).jpg" class="img-fluid gallery-img" alt="Short Boho Braids 2" data-style="Short Boho Braids">
+      </div>
+    </div>   
+    
+    <h3 class="text-white mt-5">Island Twist</h3>
+    <div class="row g-4">
+      <div class="col-md-3">
+        <img src="images/Island twist.jpg" class="img-fluid gallery-img" alt="Island Twist" data-style="Island Twist">
+      </div>
+      <div class="col-md-3">
+        <img src="images/boho.jpg" class="img-fluid gallery-img" alt="Buss Down Island Twist" data-style="Buss Down Boho Braids">
+      </div>
+      <div class="col-md-3">
+        <img src="images/Short boho.jpg" class="img-fluid gallery-img" alt="Short island twist" data-style="Short Boho Braids">
+      </div>
+      <div class="col-md-3">
+        <img src="images/short Island(2).jpg" class="img-fluid gallery-img" alt="Short Boho Braids 2" data-style="Short Island Twist">
+      </div>
+    </div>
   </div>
+</section>
 
-  <div class="col-md-3">
-    <img src="images/boho.jpg" class="img-fluid gallery-img"
-         data-style="Buss Down Boho Braids">
-  </div>
-
-  <div class="col-md-3">
-    <img src="images/Short boho.jpg" class="img-fluid gallery-img"
-         data-style="Short boho Braids">
-  </div>
-
-  <div class="col-md-3">
-    <img src="images/short boho(2).jpg" class="img-fluid gallery-img"
-         data-style="Short Boho Braids">
-  </div>
-
-</div>   
-  <h3 class="text-white mt-5"> Island Twist</h3>
-<div class="row g-4">
-
-  <div class="col-md-3">
-    <img src="images/Island twist.jpg" class="img-fluid gallery-img"
-         data-style="Island twist">
-  </div>
-
-  <div class="col-md-3">
-    <img src="images/boho.jpg" class="img-fluid gallery-img"
-         data-style="Buss Down Boho Braids">
-  </div>
-
-  <div class="col-md-3">
-    <img src="images/Short boho.jpg" class="img-fluid gallery-img"
-         data-style="Short boho Braids">
-  </div>
-
-  <div class="col-md-3">
-    <img src="images/short boho(2).jpg" class="img-fluid gallery-img"
-         data-style="Short Boho Braids">
-  </div>
-
-</div
-
-<!-- ══════════ REVIEWS SECTION ══════════ -->
-<section id="reviews" class="page-section py-5" style="background: var(--dark2);">
+<!-- REVIEWS -->
+<section id="reviews" class="page-section">
   <div class="container">
-
     <div class="text-center mb-5">
+      <p class="hero-label">Customer Feedback</p>
       <h2 class="section-heading">Customer <span style="color:var(--pink)">Reviews</span></h2>
       <div class="section-line"></div>
     </div>
 
     <!-- Review Form -->
-    <div class="card shadow p-4 mb-5" style="background:var(--dark3);color:white;border:none;">
-      <h5 class="mb-3">Leave a Review</h5>
-
+    <div class="booking-form-wrap mb-5">
+      <h5 class="mb-4">Leave a Review</h5>
       <form id="reviewForm">
         <div class="mb-3">
-          <input type="text" id="reviewName" class="form-control"
-                 placeholder="Your Name" required>
+          <input type="text" id="reviewName" class="form-control" placeholder="Your Name" required>
         </div>
-
         <div class="mb-3">
-          <textarea id="reviewText" class="form-control"
-                    rows="3" placeholder="Write your review..."
-                    required></textarea>
+          <textarea id="reviewText" class="form-control" rows="3" placeholder="Write your review..." required></textarea>
         </div>
-
         <div class="mb-3">
           <label class="form-label">Rating:</label>
           <div class="star-rating">
@@ -629,22 +521,16 @@
             <span data-value="5">★</span>
           </div>
         </div>
-
-        <button type="submit" class="btn btn-pink">
-          Submit Review
-        </button>
+        <button type="submit" class="btn btn-pink">Submit Review</button>
       </form>
     </div>
 
     <!-- Display Reviews -->
     <div id="reviewsContainer" class="row g-4"></div>
-
   </div>
 </section>
 
-
-
-<!-- ══════════ BOOKING ══════════ -->
+<!-- BOOKING -->
 <section id="booking" class="page-section">
   <div class="container">
     <div class="text-center">
@@ -655,69 +541,66 @@
     <div class="row justify-content-center">
       <div class="col-lg-8">
         <div class="booking-form-wrap">
-          <div id="bookingAlert" class="alert" style="display:none;"></div>
-          <div class="row g-4">
-            <div class="col-md-6">
-              <label class="form-label">First Name</label>
-              <input type="text" class="form-control" id="firstName" placeholder="Jane">
+          <form id="bookingForm">
+            <div class="row g-4">
+              <div class="col-md-6">
+                <label class="form-label">First Name</label>
+                <input type="text" class="form-control" id="firstName" placeholder="Jane" required>
+              </div>
+              <div class="col-md-6">
+                <label class="form-label">Last Name</label>
+                <input type="text" class="form-control" id="lastName" placeholder="Doe" required>
+              </div>
+              <div class="col-md-6">
+                <label class="form-label">Phone Number</label>
+                <input type="tel" class="form-control" id="phone" placeholder="+27 72 856 2814" required>
+              </div>
+              <div class="col-md-6">
+                <label class="form-label">Select Service</label>
+                <select class="form-select" id="service" required>
+                  <option value="">Choose a service...</option>
+                  <option>Braids</option>
+                  <option>Hair Installation</option>
+                  <option>Eyelash Installation</option>
+                  <option>Makeup</option>
+                  <option>Hair Wash</option>
+                </select>
+              </div>
+              <div class="col-md-6">
+                <label class="form-label">Preferred Date</label>
+                <input type="date" class="form-control" id="bookDate" required>
+              </div>
+              <div class="col-md-6">
+                <label class="form-label">Preferred Time</label>
+                <select class="form-select" id="bookTime" required>
+                  <option value="">Select time...</option>
+                  <option>9:00 AM</option>
+                  <option>10:00 AM</option>
+                  <option>11:00 AM</option>
+                  <option>12:00 PM</option>
+                  <option>1:00 PM</option>
+                  <option>2:00 PM</option>
+                  <option>3:00 PM</option>
+                  <option>4:00 PM</option>
+                  <option>5:00 PM</option>
+                </select>
+              </div>
+              <div class="col-12">
+                <label class="form-label">Additional Notes</label>
+                <textarea class="form-control" id="notes" rows="3" placeholder="Any special requests or concerns..."></textarea>
+              </div>
+              <div class="col-12">
+                <button type="submit" class="btn btn-pink w-100 py-3">Confirm Appointment</button>
+              </div>
             </div>
-            <div class="col-md-6">
-              <label class="form-label">Last Name</label>
-              <input type="text" class="form-control" id="lastName" placeholder="Doe">
-            </div>
-            <div class="col-md-6">
-              
-            <div class="col-md-6">
-              <label class="form-label">Phone Number</label>
-              <input type="tel" class="form-control" id="phone" placeholder="+1 000 000 0000">
-            </div>
-            <div class="col-md-6">
-              <label class="form-label">Select Service</label>
-              <select class="form-select" id="service">
-                <option value="">Choose a service...</option>
-                <option>Haircut & Styling</option>
-                <option>Hair installation</option>
-                <option>Eyelash installation</option>
-                <option>Makeup</option>
-                <option>Hair wash</option>
-                
-              </select>
-            </div>
-            
-            <div class="col-md-6">
-              <label class="form-label">Preferred Date</label>
-              <input type="date" class="form-control" id="bookDate">
-            </div>
-            <div class="col-md-6">
-              <label class="form-label">Preferred Time</label>
-              <select class="form-select" id="bookTime">
-                <option value="">Select time...</option>
-                <option>9:00 AM</option>
-                <option>10:00 AM</option>
-                <option>11:00 AM</option>
-                <option>12:00 PM</option>
-                <option>1:00 PM</option>
-                <option>2:00 PM</option>
-                <option>3:00 PM</option>
-                <option>4:00 PM</option>
-                <option>5:00 PM</option>
-              </select>
-            </div>
-            <div class="col-12">
-              <label class="form-label">Additional Notes</label>
-              <textarea class="form-control" id="notes" rows="3" placeholder="Any special requests or concerns..."></textarea>
-            </div>
-            <div class="col-12">
-              <button class="btn btn-pink w-100 py-3" onclick="submitBooking()">Confirm Appointment</button>
-            </div>
-          </div>
+          </form>
         </div>
       </div>
     </div>
   </div>
 </section>
 
-<!-- ══════════ CONTACT ══════════ -->
+<!-- CONTACT -->
 <section id="contact" class="page-section">
   <div class="container">
     <div class="text-center">
@@ -731,24 +614,25 @@
           <div class="contact-icon"><i class="bi bi-geo-alt-fill"></i></div>
           <div>
             <h6>Location</h6>
-            <p>42 Pretoria</p>
+            <p>42 1050 Luvuyo street Phumula roodekop</p>
+<p>House calls are available  for those from Pretoria,with a <em>R100</em>NONREFUNDABLE FEE </p>
           </div>
         </div>
         <div class="contact-info-item">
           <div class="contact-icon"><i class="bi bi-clock-fill"></i></div>
           <div>
             <h6>Opening Hours</h6>
-            <p>Mon–Sat: 9:00 AM – 7:00 PM<br>Sunday: 10:00 AM – 5:00 PM</p>
+            <p>Mon–Sat: 9:00 AM – 6:00 PM</p>
           </div>
         </div>
         <div class="contact-info-item">
           <div class="contact-icon"><i class="bi bi-telephone-fill"></i></div>
           <div>
             <h6>Phone</h6>
-            <p>+27728562814</p>
+            <p>+27 72 856 2814</p>
           </div>
         </div>
-        <div class="social-links mt-2">
+        <div class="social-links mt-4">
           <a href="#"><i class="bi bi-instagram"></i></a>
           <a href="#"><i class="bi bi-facebook"></i></a>
           <a href="#"><i class="bi bi-tiktok"></i></a>
@@ -756,25 +640,24 @@
         </div>
       </div>
       <div class="col-lg-7">
-        <div style="background:var(--dark3);border:1px solid rgba(232,160,176,0.12);height:100%;min-height:380px;display:flex;align-items:center;justify-content:center;flex-direction:column;gap:1rem;">
+        <div class="booking-form-wrap" style="min-height:380px;display:flex;align-items:center;justify-content:center;flex-direction:column;">
           <i class="bi bi-map" style="font-size:4rem;color:var(--pink);opacity:0.4;"></i>
-          <p style="color:var(--text-muted);font-size:0.9rem;letter-spacing:1px;">42 Blossom Lane, New York</p>
-          <a href="https://maps.google.com" target="_blank" class="btn btn-outline-pink" style="font-size:0.75rem;">Open in Google Maps</a>
+          <p style="color:var(--text-muted);font-size:0.9rem;letter-spacing:1px;">42 Pretoria Street, Pretoria</p>
+          <a href="https://maps.google.com" target="_blank" class="btn btn-outline-pink mt-3">Open in Google Maps</a>
         </div>
       </div>
     </div>
   </div>
 </section>
 
-
 <!-- FOOTER -->
 <footer>
-  <p>© 2026 <span>Hope's Magic Hairr</span>. All rights reserved. Crafted with <span>🩷💗</span> for beauty.</p>
+  <p>© 2026 <span>Hope's Magic Hair</span>. All rights reserved. Crafted with <span>🩷</span> for beauty.</p>
 </footer>
 
 <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.2/js/bootstrap.bundle.min.js"></script>
 <script>
-  // ── Section routing ──
+  // Section routing
   function showSection(id) {
     document.querySelectorAll('.page-section').forEach(s => s.classList.remove('active'));
     document.getElementById(id).classList.add('active');
@@ -785,58 +668,30 @@
     // Close mobile nav
     const nav = document.getElementById('navMenu');
     if (nav.classList.contains('show')) {
-      new bootstrap.Collapse(nav).hide();
+      bootstrap.Collapse.getInstance(nav)?.hide();
     }
   }
 
-  // ── Gallery filter ──
-
-const myCarousel = document.querySelector('#galleryCarousel');
-const carousel = new bootstrap.Carousel(myCarousel, {
-  interval: 3500,
-  pause: 'hover',
-  touch: true
-});
-
-  document.querySelectorAll('.filter-btn').forEach(btn => {
-    btn.addEventListener('click', () => {
-      document.querySelectorAll('.filter-btn').forEach(b => b.classList.remove('active'));
-      btn.classList.add('active');
-      const filter = btn.dataset.filter;
-      document.querySelectorAll('.gallery-item').forEach(item => {
-        if (filter === 'all' || item.dataset.category === filter) {
-          item.style.display = '';
-          item.style.animation = 'fadeUp 0.4s ease both';
-        } else {
-          item.style.display = 'none';
-        }
-      });
-    });
-  });
-
-
-  // ── Set min date for booking ──
+  // Set min date for booking
   const dateInput = document.getElementById('bookDate');
   if (dateInput) {
     const today = new Date().toISOString().split('T')[0];
     dateInput.min = today;
   }
 
-  // ── Booking submit ──
- 
-const bookingForm = document.getElementById("bookingForm");
+  // Booking form submission
+  document.getElementById('bookingForm').addEventListener('submit', function(e) {
+    e.preventDefault();
+    
+    const firstName = document.getElementById('firstName').value;
+    const lastName = document.getElementById('lastName').value;
+    const phone = document.getElementById('phone').value;
+    const service = document.getElementById('service').value;
+    const date = document.getElementById('bookDate').value;
+    const time = document.getElementById('bookTime').value;
+    const notes = document.getElementById('notes').value;
 
-bookingForm.addEventListener("submit", function (e) {
-  e.preventDefault();
-
-  const firstName = document.getElementById("firstName").value;
-  const lastName = document.getElementById("lastName").value;
-  const phone = document.getElementById("phone").value;
-  const service = document.getElementById("service").value;
-  const date = document.getElementById("date").value;
-  const time = document.getElementById("time").value;
-
-  const message = `
+    const message = `
 🌸 *New Hair Appointment Booking* 🌸
 
 👤 Name: ${firstName} ${lastName}
@@ -844,84 +699,81 @@ bookingForm.addEventListener("submit", function (e) {
 💇 Service: ${service}
 📅 Date: ${date}
 ⏰ Time: ${time}
+📝 Notes: ${notes || 'None'}
 
 Thank you!
-  `;
+    `;
 
-  const whatsappNumber = "27728562814"; // ← PUT YOUR NUMBER HERE
-
-  const whatsappURL = `https://wa.me/${whatsappNumber}?text=${encodeURIComponent(message)}`;
-
-  window.open(whatsappURL, "_blank");
-});
-
-let selectedRating = 0;
-
-const stars = document.querySelectorAll('.star-rating span');
-const reviewForm = document.getElementById('reviewForm');
-const reviewsContainer = document.getElementById('reviewsContainer');
-
-// Star selection
-stars.forEach(star => {
-  star.addEventListener('click', () => {
-    selectedRating = star.getAttribute('data-value');
-    stars.forEach(s => s.classList.remove('active'));
-    for (let i = 0; i < selectedRating; i++) {
-      stars[i].classList.add('active');
-    }
+    const whatsappNumber = '27728562814';
+    const whatsappURL = `https://wa.me/${whatsappNumber}?text=${encodeURIComponent(message)}`;
+    window.open(whatsappURL, '_blank');
   });
-});
 
-// Load saved reviews
-document.addEventListener('DOMContentLoaded', loadReviews);
+  // Reviews functionality
+  let selectedRating = 0;
+  const stars = document.querySelectorAll('.star-rating span');
+  const reviewForm = document.getElementById('reviewForm');
+  const reviewsContainer = document.getElementById('reviewsContainer');
 
-reviewForm.addEventListener('submit', function(e) {
-  e.preventDefault();
+  // Star selection
+  stars.forEach(star => {
+    star.addEventListener('click', () => {
+      selectedRating = parseInt(star.getAttribute('data-value'));
+      stars.forEach(s => s.classList.remove('active'));
+      for (let i = 0; i < selectedRating; i++) {
+        stars[i].classList.add('active');
+      }
+    });
+  });
 
-  const name = document.getElementById('reviewName').value;
-  const text = document.getElementById('reviewText').value;
+  // Load saved reviews
+  document.addEventListener('DOMContentLoaded', loadReviews);
 
-  if (selectedRating === 0) {
-    alert("Please select a rating");
-    return;
+  reviewForm.addEventListener('submit', function(e) {
+    e.preventDefault();
+
+    const name = document.getElementById('reviewName').value;
+    const text = document.getElementById('reviewText').value;
+
+    if (selectedRating === 0) {
+      alert('Please select a rating');
+      return;
+    }
+
+    const review = { name, text, rating: selectedRating };
+    saveReview(review);
+    addReviewToPage(review);
+
+    reviewForm.reset();
+    selectedRating = 0;
+    stars.forEach(s => s.classList.remove('active'));
+  });
+
+  function saveReview(review) {
+    let reviews = JSON.parse(localStorage.getItem('reviews')) || [];
+    reviews.push(review);
+    localStorage.setItem('reviews', JSON.stringify(reviews));
   }
 
-  const review = { name, text, rating: selectedRating };
+  function loadReviews() {
+    let reviews = JSON.parse(localStorage.getItem('reviews')) || [];
+    reviews.forEach(addReviewToPage);
+  }
 
-  saveReview(review);
-  addReviewToPage(review);
+  function addReviewToPage(review) {
+    const col = document.createElement('div');
+    col.className = 'col-md-6';
 
-  reviewForm.reset();
-  selectedRating = 0;
-  stars.forEach(s => s.classList.remove('active'));
-});
+    col.innerHTML = `
+      <div class="review-card">
+        <h6>${review.name}</h6>
+        <div class="review-stars">${'★'.repeat(review.rating)}</div>
+        <p class="mt-2">${review.text}</p>
+      </div>
+    `;
 
-function saveReview(review) {
-  let reviews = JSON.parse(localStorage.getItem('reviews')) || [];
-  reviews.push(review);
-  localStorage.setItem('reviews', JSON.stringify(reviews));
-}
-
-function loadReviews() {
-  let reviews = JSON.parse(localStorage.getItem('reviews')) || [];
-  reviews.forEach(addReviewToPage);
-}
-
-function addReviewToPage(review) {
-  const col = document.createElement('div');
-  col.className = "col-md-6";
-
-  col.innerHTML = `
-    <div class="review-card">
-      <h6>${review.name}</h6>
-      <div class="review-stars">${'★'.repeat(review.rating)}</div>
-      <p class="mt-2">${review.text}</p>
-    </div>
-  `;
-
-  reviewsContainer.appendChild(col);
-}
+    reviewsContainer.appendChild(col);
+  }
 </script>
 </body>
 </html>
-
