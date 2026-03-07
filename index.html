@@ -226,10 +226,15 @@
       box-shadow: 0 10px 30px rgba(201,99,122,0.4);
   }
      
-.price-glow  {
-color: var(--dark pink);
+.price-glow {
+color: var(--darkpink);
 font-weight: bold;
 animation: glow 2s infinite alternate;
+}
+
+@keyframes glow {
+  from { text-shadow: 0 0 5px #ff4da6; }
+  to { text-shadow: 0 0 20px #ff4da6; }
 }
     
 
