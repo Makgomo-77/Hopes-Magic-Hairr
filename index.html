@@ -124,16 +124,14 @@
       justify-content: center;
     }
     .hero-circle {
-      width: 380px;
-      height: 380px;
+      width: 380px; height: 380px;
       border-radius: 50%;
       background: linear-gradient(135deg, var(--pink-deep) 0%, var(--pink-light) 100%);
       opacity: 0.12;
       position: absolute;
     }
     .hero-ring {
-      width: 420px;
-      height: 420px;
+      width: 420px; height: 420px;
       border-radius: 50%;
       border: 1px solid rgba(232,160,176,0.3);
       position: absolute;
@@ -148,13 +146,9 @@
     }
 
     /* SECTION HEADING */
-    .section-heading {
-      font-size: clamp(2rem, 4vw, 3rem);
-      margin-bottom: 0.5rem;
-    }
+    .section-heading { font-size: clamp(2rem, 4vw, 3rem); margin-bottom: 0.5rem; }
     .section-line {
-      width: 50px;
-      height: 2px;
+      width: 50px; height: 2px;
       background: var(--pink-deep);
       margin: 1rem auto 3rem;
     }
@@ -191,62 +185,156 @@
     }
     .service-card:hover::before { transform: scaleX(1); }
     .service-card:hover { border-color: rgba(232,160,176,0.3); transform: translateY(-4px); }
-    .service-icon {
-      font-size: 2rem;
-      color: var(--pink);
-      margin-bottom: 1.2rem;
-    }
-    .service-card h5 {
-      font-family: 'Playfair Display', serif;
-      margin-bottom: 0.8rem;
-      font-size: 1.2rem;
-    }
+    .service-icon { font-size: 2rem; color: var(--pink); margin-bottom: 1.2rem; }
+    .service-card h5 { font-family: 'Playfair Display', serif; margin-bottom: 0.8rem; font-size: 1.2rem; }
     .service-card p { color: var(--text-muted); font-size: 0.9rem; line-height: 1.7; }
-    .service-price {
-      color: var(--pink-deep);
-      font-size: 0.9rem;
-      margin-top: 1rem;
-      font-weight: 500;
-      letter-spacing: 1px;
+    .service-price { color: var(--pink-deep); font-size: 0.9rem; margin-top: 1rem; font-weight: 500; letter-spacing: 1px; }
+
+    /* ===================== GALLERY ===================== */
+    #gallery { background: var(--dark2); padding: 6rem 0; }
+
+    .gallery-category { margin-bottom: 3.5rem; }
+
+    .gallery-category-title {
+      font-family: 'Playfair Display', serif;
+      font-size: 1.5rem;
+      color: var(--white);
+      margin-bottom: 0.4rem;
+      display: flex;
+      align-items: center;
+      gap: 0.75rem;
+    }
+    .gallery-category-title::after {
+      content: '';
+      flex: 1;
+      height: 1px;
+      background: rgba(232,160,176,0.2);
     }
 
-    /* GALLERY */
-    #gallery { background: var(--dark2); padding: 6rem 0; }
-    .gallery-img {
+    /* Horizontal scroll track */
+    .gallery-track-wrap {
+      position: relative;
+    }
+    .gallery-track {
+      display: flex;
+      gap: 14px;
+      overflow-x: auto;
+      scroll-behavior: smooth;
+      padding-bottom: 10px;
+      scrollbar-width: thin;
+      scrollbar-color: var(--pink-deep) var(--dark3);
+      -webkit-overflow-scrolling: touch;
+    }
+    .gallery-track::-webkit-scrollbar { height: 4px; }
+    .gallery-track::-webkit-scrollbar-track { background: var(--dark3); border-radius: 4px; }
+    .gallery-track::-webkit-scrollbar-thumb { background: var(--pink-deep); border-radius: 4px; }
+
+    .gallery-slide {
+      flex: 0 0 auto;
+      width: 220px;
+      position: relative;
+      cursor: pointer;
+    }
+    .gallery-slide img {
       width: 100%;
       height: 280px;
       object-fit: cover;
       border-radius: 8px;
-      transition: transform 0.3s ease;
-      cursor: pointer;
-      margin-bottom: 15px;
+      display: block;
+      transition: transform 0.35s ease, box-shadow 0.35s ease;
     }
-    .gallery-img:hover {
-      transform: scale(1.03);
-      box-shadow: 0 10px 30px rgba(201,99,122,0.4);
-  }
-     
-.price-glow {
-color: var(--darkpink);
-font-weight: bold;
-animation: glow 2s infinite alternate;
-}
+    .gallery-slide:hover img {
+      transform: scale(1.04);
+      box-shadow: 0 12px 36px rgba(201,99,122,0.5);
+    }
+    .slide-price {
+      position: absolute;
+      bottom: 0;
+      left: 0; right: 0;
+      background: linear-gradient(to top, rgba(17,17,17,0.95) 60%, transparent);
+      padding: 1rem 0.8rem 0.6rem;
+      border-radius: 0 0 8px 8px;
+      font-size: 0.9rem;
+      font-weight: 600;
+      color: var(--pink);
+      text-shadow: 0 0 12px rgba(232,160,176,0.6);
+      animation: glow 2.5s ease-in-out infinite alternate;
+    }
+    @keyframes glow {
+      from { text-shadow: 0 0 5px #ff4da6; }
+      to   { text-shadow: 0 0 18px #ff4da6; }
+    }
+    .slide-label {
+      font-size: 0.72rem;
+      color: var(--text-muted);
+      letter-spacing: 0.5px;
+    }
 
-@keyframes glow {
-  from { text-shadow: 0 0 5px #ff4da6; }
-  to { text-shadow: 0 0 20px #ff4da6; }
-}
-    
+    /* Scroll arrow buttons */
+    .scroll-btn {
+      position: absolute;
+      top: 50%;
+      transform: translateY(-60%);
+      z-index: 10;
+      background: rgba(17,17,17,0.85);
+      border: 1px solid rgba(232,160,176,0.3);
+      color: var(--pink);
+      width: 36px; height: 36px;
+      border-radius: 50%;
+      display: flex; align-items: center; justify-content: center;
+      cursor: pointer;
+      transition: background 0.25s, border-color 0.25s;
+      font-size: 1rem;
+    }
+    .scroll-btn:hover { background: var(--pink-deep); border-color: var(--pink-deep); color: var(--white); }
+    .scroll-btn.left  { left: -18px; }
+    .scroll-btn.right { right: -18px; }
+    @media (max-width: 576px) {
+      .scroll-btn { display: none; }
+      .gallery-slide { width: 180px; }
+      .gallery-slide img { height: 230px; }
+    }
 
+    /* Lightbox */
+    .lightbox-overlay {
+      display: none;
+      position: fixed;
+      inset: 0;
+      background: rgba(0,0,0,0.92);
+      z-index: 9999;
+      align-items: center;
+      justify-content: center;
+    }
+    .lightbox-overlay.open { display: flex; }
+    .lightbox-overlay img {
+      max-width: 90vw;
+      max-height: 88vh;
+      border-radius: 6px;
+      box-shadow: 0 0 60px rgba(201,99,122,0.4);
+    }
+    .lightbox-close {
+      position: absolute;
+      top: 1.2rem; right: 1.5rem;
+      font-size: 2rem;
+      color: var(--pink);
+      cursor: pointer;
+      line-height: 1;
+    }
+    .lightbox-caption {
+      position: absolute;
+      bottom: 1.5rem;
+      left: 50%; transform: translateX(-50%);
+      background: rgba(17,17,17,0.85);
+      padding: 0.5rem 1.5rem;
+      border-radius: 4px;
+      font-size: 0.9rem;
+      color: var(--pink-light);
+      white-space: nowrap;
+    }
 
     /* REVIEWS */
     #reviews { background: var(--dark2); padding: 6rem 0; }
-    .star-rating span {
-      font-size: 1.8rem;
-      cursor: pointer;
-      color: var(--text-muted);
-      transition: 0.3s;
-    }
+    .star-rating span { font-size: 1.8rem; cursor: pointer; color: var(--text-muted); transition: 0.3s; }
     .star-rating span.active { color: gold; }
     .review-card {
       background: var(--dark3);
@@ -259,7 +347,7 @@ animation: glow 2s infinite alternate;
     .review-stars { color: gold; font-size: 1.1rem; margin-bottom: 10px; }
     .review-card p { color: var(--text-muted); }
 
-    /* BOOKING */
+    /* ===================== BOOKING ===================== */
     #booking { background: var(--dark2); padding: 6rem 0; }
     .booking-form-wrap {
       background: var(--dark3);
@@ -288,36 +376,101 @@ animation: glow 2s infinite alternate;
       margin-bottom: 0.5rem;
     }
 
+    /* Multi-select service checkboxes */
+    .service-checkboxes {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+    }
+    .service-checkbox-label {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      background: var(--dark);
+      border: 1px solid rgba(232,160,176,0.2);
+      padding: 0.55rem 1rem;
+      cursor: pointer;
+      transition: border-color 0.25s, background 0.25s;
+      font-size: 0.85rem;
+      color: var(--white);
+      user-select: none;
+    }
+    .service-checkbox-label input[type="checkbox"] {
+      appearance: none;
+      -webkit-appearance: none;
+      width: 16px; height: 16px;
+      border: 1.5px solid var(--pink-deep);
+      background: transparent;
+      cursor: pointer;
+      position: relative;
+      flex-shrink: 0;
+      transition: background 0.2s;
+    }
+    .service-checkbox-label input[type="checkbox"]:checked {
+      background: var(--pink-deep);
+    }
+    .service-checkbox-label input[type="checkbox"]:checked::after {
+      content: '✓';
+      position: absolute;
+      top: 50%; left: 50%;
+      transform: translate(-50%, -50%);
+      color: var(--white);
+      font-size: 11px;
+      line-height: 1;
+    }
+    .service-checkbox-label:has(input:checked) {
+      border-color: var(--pink-deep);
+      background: rgba(201,99,122,0.12);
+    }
+    .service-checkbox-label:hover { border-color: var(--pink); }
+
+    /* Proof of payment upload */
+    .upload-zone {
+      border: 2px dashed rgba(232,160,176,0.3);
+      background: var(--dark);
+      padding: 2rem;
+      text-align: center;
+      cursor: pointer;
+      transition: border-color 0.3s, background 0.3s;
+      position: relative;
+    }
+    .upload-zone:hover, .upload-zone.drag-over {
+      border-color: var(--pink-deep);
+      background: rgba(201,99,122,0.07);
+    }
+    .upload-zone input[type="file"] {
+      position: absolute;
+      inset: 0;
+      opacity: 0;
+      cursor: pointer;
+      width: 100%;
+      height: 100%;
+    }
+    .upload-zone i { font-size: 2rem; color: var(--pink); display: block; margin-bottom: 0.6rem; }
+    .upload-zone p { color: var(--text-muted); margin: 0; font-size: 0.85rem; }
+    .upload-zone .upload-hint { font-size: 0.75rem; color: rgba(170,170,170,0.5); margin-top: 0.3rem; }
+    .upload-preview {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      background: rgba(201,99,122,0.1);
+      border: 1px solid rgba(232,160,176,0.2);
+      padding: 0.75rem 1rem;
+      margin-top: 0.75rem;
+    }
+    .upload-preview i { color: var(--pink); font-size: 1.2rem; }
+    .upload-preview span { font-size: 0.85rem; color: var(--pink-light); flex: 1; word-break: break-all; }
+    .upload-preview .remove-file { color: var(--text-muted); cursor: pointer; font-size: 1.1rem; transition: color 0.2s; }
+    .upload-preview .remove-file:hover { color: var(--pink-deep); }
+
     /* CONTACT */
     #contact { background: var(--dark2); padding: 6rem 0; }
-    .contact-info-item {
-      display: flex;
-      align-items: flex-start;
-      gap: 1.2rem;
-      margin-bottom: 2rem;
-    }
-    .contact-icon {
-      font-size: 1.5rem;
-      color: var(--pink);
-    }
-    .contact-info-item h6 {
-      font-family: 'Playfair Display', serif;
-      color: var(--white);
-      margin-bottom: 0.3rem;
-    }
-    .contact-info-item p {
-      color: var(--text-muted);
-      margin-bottom: 0;
-    }
-    .social-links {
-      display: flex;
-      gap: 1rem;
-    }
-    .social-links a {
-      color: var(--text-muted);
-      font-size: 1.5rem;
-      transition: color 0.3s;
-    }
+    .contact-info-item { display: flex; align-items: flex-start; gap: 1.2rem; margin-bottom: 2rem; }
+    .contact-icon { font-size: 1.5rem; color: var(--pink); }
+    .contact-info-item h6 { font-family: 'Playfair Display', serif; color: var(--white); margin-bottom: 0.3rem; }
+    .contact-info-item p { color: var(--text-muted); margin-bottom: 0; }
+    .social-links { display: flex; gap: 1rem; }
+    .social-links a { color: var(--text-muted); font-size: 1.5rem; transition: color 0.3s; }
     .social-links a:hover { color: var(--pink); }
 
     /* FOOTER */
@@ -334,14 +487,12 @@ animation: glow 2s infinite alternate;
 
     /* MISC */
     .pink-text { color: var(--pink); }
-    .text-muted-custom { color: var(--text-muted); }
     .fade-in { animation: fadeUp 0.6s ease both; }
     @keyframes fadeUp {
       from { opacity: 0; transform: translateY(20px); }
-      to { opacity: 1; transform: translateY(0); }
+      to   { opacity: 1; transform: translateY(0); }
     }
 
-    /* Offer banner */
     .offer-strip {
       background: linear-gradient(90deg, var(--pink-deep), #a04060, var(--pink-deep));
       background-size: 200% auto;
@@ -360,7 +511,6 @@ animation: glow 2s infinite alternate;
   </style>
 </head>
 <body>
-
 
 <!-- NAVBAR -->
 <nav class="navbar navbar-expand-lg sticky-top">
@@ -462,105 +612,197 @@ animation: glow 2s infinite alternate;
 
 <!-- GALLERY -->
 <section id="gallery" class="page-section">
-  <div class="container">
+  <div class="container-fluid px-4 px-lg-5">
     <div class="text-center">
       <p class="hero-label">Our Work</p>
-      <h2 class="section-heading">Hair <em style="color:var(--pink)">Gallery</em></h2>
+      <h2 class="section-heading">Hair & Beauty <em style="color:var(--pink)">Gallery</em></h2>
       <div class="section-line"></div>
     </div>
-    
-    <h3 class="text-white mt-5">Boho Braids</h3>
-    <div class="row g-4">
-      <div class="col-md-3">
-        <img src="images/Boho braids.jpg" class="img-fluid gallery-img" alt="Boho Braids" data-style="Boho Braids">
-<h5 class="price-glow">R700 (fibre included) </h5>
-      </div>
-  <div class="row g-4">
-      <div class="col-md-3">
-        <img src="images/Buss down goddess.jpg" class="img-fluid gallery-img" alt="Boho Braids" data-style="Boho Braids">
-<h5 class="price-glow">R700 (fibre included) </h5>
-      </div
-     
-      <div class="col-md-3">
-        <img src="images/short boho.jpg" class="img-fluid gallery-img" alt="Short Boho Braids" data-style="Short Boho Braids">
-<h5 class="price-glow">R450(fibre included)</h5>
-      </div>
-      <div class="col-md-3">
-        <img src="images/short boho (2).jpg" class="img-fluid gallery-img" alt="Short Boho Braids 2" data-style="Short Boho Braids">
-<h5 class="price-glow">R450(fibre included) <h5>
-      </div>
-    </div>   
-    
-    <h3 class="text-white mt-5">Island Twist</h3>
-    <div class="row g-4">
-      <div class="col-md-3">
-        <img src="images/Island Twist.jpg" class="img-fluid gallery-img" alt="Island Twist" data-style="Island Twist">
-<h5 class="price-glow">R700(fibre included) <h5>
-      </div>
-      <div class="col-md-3">
-        <img src="images/short island twist (2).jpg" class="img-fluid gallery-img" alt="Short island twist" data-style="short island twist">
-<h5 class="price-glow">R450(fibre included) <h5>
-      </div>
-      <div class="col-md-3">
-        <img src="images/Short Island twist.jpg" class="img-fluid gallery-img" alt="Short Boho Braids 2" data-style="Short Island Twist">
-<h5 class="price-glow">R450(fibre included) <h5>
-      </div>
-    </div>
-  </div>
- <h3 class="text-white mt-5">Knotless Braids</h3>
-    <div class="row g-4">
-      <div class="col-md-3">
-        <img src="images/Buss down.jpg" class="img-fluid gallery-img" alt="Buss Down" data-style=" Braids">
-<h5 class="price-glow">R600(fibre included) <h5>
-      </div>
-      <div class="col-md-3">
-        <img src="images/buss down (2).jpg" class="img-fluid gallery-img" alt="Buss Down" data-style="Buss Down Braids">
-<h5 class="price-glow">R600(fibre included) <h5>
-      </div>
-    </div>
-  </div>
-<h3 class="text-white mt-5">Invisible Locs</h3>
-    <div class="row g-4">
-      <div class="col-md-3">
-        <img src="images/Invisible locs.jpg" class="img-fluid gallery-img" alt="Invisible Locs" data-style="Invisible Locs">
-<h5 class="price-glow">R500(fibre included) <h5>
-      </div>
-      <div class="col-md-3">
-        <img src="images/invisible.jpg" class="img-fluid gallery-img" alt="Invisible Locs" data-style="Invisible Locs">
-<h5 class="price-glow">R500(fibre included) <h5>
-      </div>
-      <div class="col-md-3">
-        <img src="images/invisible (2).jpg" class="img-fluid gallery-img" alt="Invisible Locs" data-style="Invisible Locs">
-      </div>
-    </div>
-  </div>
-<h3 class="text-white mt-5">Installation</h3>
-    <div class="row g-4">
-      <div class="col-md-3">
-        <img src="images/installation.jpg" class="img-fluid gallery-img" alt="Installation " data-style="Installation">
-<h5 class="price-glow">R250 </h5>
-      </div>
-    </div>
-  </div>
-<h3 class="text-white mt-5">Bantu knots</h3>
-    <div class="row g-4">
-      <div class="col-md-3">
-        <img src="images/Bantu knots.jpg" class="img-fluid gallery-img" alt="Installation " data-style="Bantu knots">
-<h5 class="price-glow">R250 </h5>
 
+    <!-- BOHO BRAIDS -->
+    <div class="gallery-category">
+      <h3 class="gallery-category-title"><i class="bi bi-stars" style="color:var(--pink);font-size:1rem"></i> Boho Braids</h3>
+      <div class="gallery-track-wrap">
+        <button class="scroll-btn left" onclick="scrollGallery(this, -1)"><i class="bi bi-chevron-left"></i></button>
+        <div class="gallery-track">
+          <div class="gallery-slide" onclick="openLightbox('images/Boho braids.jpg','Boho Braids — R700 (fibre included)')">
+            <img src="images/Boho braids.jpg" alt="Boho Braids" loading="lazy">
+            <div class="slide-price">R700 <span class="slide-label">fibre incl.</span></div>
+          </div>
+          <div class="gallery-slide" onclick="openLightbox('images/Buss down goddess.jpg','Buss Down Goddess Braids — R700 (fibre included)')">
+            <img src="images/Buss down goddess.jpg" alt="Buss Down Goddess" loading="lazy">
+            <div class="slide-price">R700 <span class="slide-label">fibre incl.</span></div>
+          </div>
+          <div class="gallery-slide" onclick="openLightbox('images/short boho.jpg','Short Boho Braids — R450 (fibre included)')">
+            <img src="images/short boho.jpg" alt="Short Boho Braids" loading="lazy">
+            <div class="slide-price">R450 <span class="slide-label">fibre incl.</span></div>
+          </div>
+          <div class="gallery-slide" onclick="openLightbox('images/short boho (2).jpg','Short Boho Braids — R450 (fibre included)')">
+            <img src="images/short boho (2).jpg" alt="Short Boho Braids 2" loading="lazy">
+            <div class="slide-price">R450 <span class="slide-label">fibre incl.</span></div>
+          </div>
+        </div>
+        <button class="scroll-btn right" onclick="scrollGallery(this, 1)"><i class="bi bi-chevron-right"></i></button>
       </div>
     </div>
+
+    <!-- ISLAND TWIST -->
+    <div class="gallery-category">
+      <h3 class="gallery-category-title"><i class="bi bi-hurricane" style="color:var(--pink);font-size:1rem"></i> Island Twist</h3>
+      <div class="gallery-track-wrap">
+        <button class="scroll-btn left" onclick="scrollGallery(this, -1)"><i class="bi bi-chevron-left"></i></button>
+        <div class="gallery-track">
+          <div class="gallery-slide" onclick="openLightbox('images/Island Twist.jpg','Island Twist — R700 (fibre included)')">
+            <img src="images/Island Twist.jpg" alt="Island Twist" loading="lazy">
+            <div class="slide-price">R700 <span class="slide-label">fibre incl.</span></div>
+          </div>
+          <div class="gallery-slide" onclick="openLightbox('images/short island twist (2).jpg','Short Island Twist — R450 (fibre included)')">
+            <img src="images/short island twist (2).jpg" alt="Short Island Twist" loading="lazy">
+            <div class="slide-price">R450 <span class="slide-label">fibre incl.</span></div>
+          </div>
+          <div class="gallery-slide" onclick="openLightbox('images/Short Island twist.jpg','Short Island Twist — R450 (fibre included)')">
+            <img src="images/Short Island twist.jpg" alt="Short Island Twist 2" loading="lazy">
+            <div class="slide-price">R450 <span class="slide-label">fibre incl.</span></div>
+          </div>
+        </div>
+        <button class="scroll-btn right" onclick="scrollGallery(this, 1)"><i class="bi bi-chevron-right"></i></button>
+      </div>
+    </div>
+
+    <!-- KNOTLESS BRAIDS -->
+    <div class="gallery-category">
+      <h3 class="gallery-category-title"><i class="bi bi-link-45deg" style="color:var(--pink);font-size:1rem"></i> Knotless Braids</h3>
+      <div class="gallery-track-wrap">
+        <button class="scroll-btn left" onclick="scrollGallery(this, -1)"><i class="bi bi-chevron-left"></i></button>
+        <div class="gallery-track">
+          <div class="gallery-slide" onclick="openLightbox('images/Buss down.jpg','Knotless Braids — R600 (fibre included)')">
+            <img src="images/Buss down.jpg" alt="Knotless Braids" loading="lazy">
+            <div class="slide-price">R600 <span class="slide-label">fibre incl.</span></div>
+          </div>
+          <div class="gallery-slide" onclick="openLightbox('images/buss down (2).jpg','Knotless Braids — R600 (fibre included)')">
+            <img src="images/buss down (2).jpg" alt="Knotless Braids 2" loading="lazy">
+            <div class="slide-price">R600 <span class="slide-label">fibre incl.</span></div>
+          </div>
+        </div>
+        <button class="scroll-btn right" onclick="scrollGallery(this, 1)"><i class="bi bi-chevron-right"></i></button>
+      </div>
+    </div>
+
+    <!-- INVISIBLE LOCS -->
+    <div class="gallery-category">
+      <h3 class="gallery-category-title"><i class="bi bi-eye-slash" style="color:var(--pink);font-size:1rem"></i> Invisible Locs</h3>
+      <div class="gallery-track-wrap">
+        <button class="scroll-btn left" onclick="scrollGallery(this, -1)"><i class="bi bi-chevron-left"></i></button>
+        <div class="gallery-track">
+          <div class="gallery-slide" onclick="openLightbox('images/Invisible locs.jpg','Invisible Locs — R500 (fibre included)')">
+            <img src="images/Invisible locs.jpg" alt="Invisible Locs" loading="lazy">
+            <div class="slide-price">R500 <span class="slide-label">fibre incl.</span></div>
+          </div>
+          <div class="gallery-slide" onclick="openLightbox('images/invisible.jpg','Invisible Locs — R500 (fibre included)')">
+            <img src="images/invisible.jpg" alt="Invisible Locs 2" loading="lazy">
+            <div class="slide-price">R500 <span class="slide-label">fibre incl.</span></div>
+          </div>
+          <div class="gallery-slide" onclick="openLightbox('images/invisible (2).jpg','Invisible Locs — R500 (fibre included)')">
+            <img src="images/invisible (2).jpg" alt="Invisible Locs 3" loading="lazy">
+            <div class="slide-price">R500 <span class="slide-label">fibre incl.</span></div>
+          </div>
+        </div>
+        <button class="scroll-btn right" onclick="scrollGallery(this, 1)"><i class="bi bi-chevron-right"></i></button>
+      </div>
+    </div>
+
+    <!-- INSTALLATION -->
+    <div class="gallery-category">
+      <h3 class="gallery-category-title"><i class="bi bi-grid-3x3-gap" style="color:var(--pink);font-size:1rem"></i> Installation</h3>
+      <div class="gallery-track-wrap">
+        <button class="scroll-btn left" onclick="scrollGallery(this, -1)"><i class="bi bi-chevron-left"></i></button>
+        <div class="gallery-track">
+          <div class="gallery-slide" onclick="openLightbox('images/installation.jpg','Installation — R250')">
+            <img src="images/installation.jpg" alt="Installation" loading="lazy">
+            <div class="slide-price">R250</div>
+          </div>
+        </div>
+        <button class="scroll-btn right" onclick="scrollGallery(this, 1)"><i class="bi bi-chevron-right"></i></button>
+      </div>
+    </div>
+
+    <!-- BANTU KNOTS -->
+    <div class="gallery-category">
+      <h3 class="gallery-category-title"><i class="bi bi-circle-half" style="color:var(--pink);font-size:1rem"></i> Bantu Knots</h3>
+      <div class="gallery-track-wrap">
+        <button class="scroll-btn left" onclick="scrollGallery(this, -1)"><i class="bi bi-chevron-left"></i></button>
+        <div class="gallery-track">
+          <div class="gallery-slide" onclick="openLightbox('images/Bantu knots.jpg','Bantu Knots — R250')">
+            <img src="images/Bantu knots.jpg" alt="Bantu Knots" loading="lazy">
+            <div class="slide-price">R250</div>
+          </div>
+        </div>
+        <button class="scroll-btn right" onclick="scrollGallery(this, 1)"><i class="bi bi-chevron-right"></i></button>
+      </div>
+    </div>
+
+    <!-- PONYTAILS -->
+    <div class="gallery-category">
+      <h3 class="gallery-category-title"><i class="bi bi-arrow-up" style="color:var(--pink);font-size:1rem"></i> Ponytails</h3>
+      <div class="gallery-track-wrap">
+        <button class="scroll-btn left" onclick="scrollGallery(this, -1)"><i class="bi bi-chevron-left"></i></button>
+        <div class="gallery-track">
+          <div class="gallery-slide" onclick="openLightbox('images/ponytail.jpg','Ponytail — R300 (fibre included)')">
+            <img src="images/ponytail.jpg" alt="Ponytail" loading="lazy">
+            <div class="slide-price">R300 <span class="slide-label">fibre incl.</span></div>
+          </div>
+          <div class="gallery-slide" onclick="openLightbox('images/Ponytail (2).jpg','Ponytail — R300 (fibre included)')">
+            <img src="images/Ponytail (2).jpg" alt="Ponytail 2" loading="lazy">
+            <div class="slide-price">R300 <span class="slide-label">fibre incl.</span></div>
+          </div>
+        </div>
+        <button class="scroll-btn right" onclick="scrollGallery(this, 1)"><i class="bi bi-chevron-right"></i></button>
+      </div>
+    </div>
+
+    <!-- ✨ MAKEUP (new category) -->
+    <div class="gallery-category">
+      <h3 class="gallery-category-title"><i class="bi bi-magic" style="color:var(--pink);font-size:1rem"></i> Makeup Artistry</h3>
+      <div class="gallery-track-wrap">
+        <button class="scroll-btn left" onclick="scrollGallery(this, -1)"><i class="bi bi-chevron-left"></i></button>
+        <div class="gallery-track">
+          <!-- Add your makeup images here — replace src with your actual image paths -->
+          <div class="gallery-slide" onclick="openLightbox('images/makeup1.jpg','Full Glam Makeup — From R260')">
+            <img src="images/makeup1.jpg" alt="Full Glam Makeup" loading="lazy" onerror="this.closest('.gallery-slide').style.display='none'">
+            <div class="slide-price">From R260</div>
+          </div>
+          <div class="gallery-slide" onclick="openLightbox('images/makeup2.jpg','Graduation Makeup — From R260')">
+            <img src="images/makeup2.jpg" alt="Graduation Makeup" loading="lazy" onerror="this.closest('.gallery-slide').style.display='none'">
+            <div class="slide-price">From R260</div>
+          </div>
+          <div class="gallery-slide" onclick="openLightbox('images/makeup3.jpg','Editorial Makeup — From R260')">
+            <img src="images/makeup3.jpg" alt="Editorial Makeup" loading="lazy" onerror="this.closest('.gallery-slide').style.display='none'">
+            <div class="slide-price">From R260</div>
+          </div>
+          <div class="gallery-slide" onclick="openLightbox('images/makeup4.jpg','Everyday Glam — From R260')">
+            <img src="images/makeup4.jpg" alt="Everyday Glam" loading="lazy" onerror="this.closest('.gallery-slide').style.display='none'">
+            <div class="slide-price">From R260</div>
+          </div>
+          <!-- Placeholder card shown if no makeup images exist yet -->
+          <div class="gallery-slide" id="makeupPlaceholder" style="width:220px">
+            <div style="width:220px;height:280px;border-radius:8px;background:var(--dark3);border:2px dashed rgba(232,160,176,0.2);display:flex;flex-direction:column;align-items:center;justify-content:center;gap:10px;">
+              <i class="bi bi-camera" style="font-size:2.5rem;color:rgba(232,160,176,0.3)"></i>
+              <p style="color:var(--text-muted);font-size:0.78rem;text-align:center;padding:0 20px;margin:0">Add your makeup photos here</p>
+            </div>
+          </div>
+        </div>
+        <button class="scroll-btn right" onclick="scrollGallery(this, 1)"><i class="bi bi-chevron-right"></i></button>
+      </div>
+    </div>
+
+  </div><!-- /container-fluid -->
+
+  <!-- Lightbox -->
+  <div class="lightbox-overlay" id="lightbox" onclick="closeLightbox(event)">
+    <span class="lightbox-close" onclick="closeLightbox()">&times;</span>
+    <img id="lightboxImg" src="" alt="">
+    <div class="lightbox-caption" id="lightboxCaption"></div>
   </div>
- <h3 class="text-white mt-5">Ponytails</h3>
-    <div class="row g-4">
-      <div class="col-md-3">
-        <img src="images/ponytail.jpg" class="img-fluid gallery-img" alt="Ponytail" data-style="Ponytail">
-<h5 class="price-glow">R300(fibre included) <h5>
-      </div>
-      <div class="col-md-3">
-        <img src="images/Ponytail (2).jpg" class="img-fluid gallery-img" alt="Ponytail" data-style="Ponytail">
-<h5 class="price-glow">R300(fibre included) <h5>
-      </div>
 </section>
 
 <!-- REVIEWS -->
@@ -571,8 +813,6 @@ animation: glow 2s infinite alternate;
       <h2 class="section-heading">Customer <span style="color:var(--pink)">Reviews</span></h2>
       <div class="section-line"></div>
     </div>
-
-    <!-- Review Form -->
     <div class="booking-form-wrap mb-5">
       <h5 class="mb-4">Leave a Review</h5>
       <form id="reviewForm">
@@ -595,8 +835,6 @@ animation: glow 2s infinite alternate;
         <button type="submit" class="btn btn-pink">Submit Review</button>
       </form>
     </div>
-
-    <!-- Display Reviews -->
     <div id="reviewsContainer" class="row g-4"></div>
   </div>
 </section>
@@ -606,7 +844,7 @@ animation: glow 2s infinite alternate;
   <div class="container">
     <div class="text-center">
       <p class="hero-label">Reserve Your Spot</p>
-<p>R70 BOOKING FEE </p>
+      <p style="color:var(--pink-light);font-size:0.9rem;letter-spacing:1px;">R70 BOOKING FEE</p>
       <h2 class="section-heading">Book an <em style="color:var(--pink)">Appointment</em></h2>
       <div class="section-line"></div>
     </div>
@@ -615,6 +853,7 @@ animation: glow 2s infinite alternate;
         <div class="booking-form-wrap">
           <form id="bookingForm">
             <div class="row g-4">
+
               <div class="col-md-6">
                 <label class="form-label">First Name</label>
                 <input type="text" class="form-control" id="firstName" placeholder="Jane" required>
@@ -627,17 +866,39 @@ animation: glow 2s infinite alternate;
                 <label class="form-label">Phone Number</label>
                 <input type="tel" class="form-control" id="phone" placeholder="+27 72 856 2814" required>
               </div>
-              <div class="col-md-6">
-                <label class="form-label">Select Service</label>
-                <select class="form-select" id="service" required>
-                  <option value="">Choose a service...</option>
-                  <option>Braids</option>
-                  <option>Hair Installation</option>
-                  <option>Eyelash Installation</option>
-                  <option>Makeup</option>
-                  <option>Hair Wash</option>
-                </select>
+
+              <!-- MULTI-SELECT SERVICES -->
+              <div class="col-12">
+                <label class="form-label">Select Services <span style="color:var(--text-muted);font-size:0.75rem;text-transform:none;letter-spacing:0">(choose one or more)</span></label>
+                <div class="service-checkboxes">
+                  <label class="service-checkbox-label">
+                    <input type="checkbox" name="services" value="Braids"> Braids
+                  </label>
+                  <label class="service-checkbox-label">
+                    <input type="checkbox" name="services" value="Hair Installation"> Hair Installation
+                  </label>
+                  <label class="service-checkbox-label">
+                    <input type="checkbox" name="services" value="Eyelash Installation"> Eyelash Installation
+                  </label>
+                  <label class="service-checkbox-label">
+                    <input type="checkbox" name="services" value="Makeup"> Makeup
+                  </label>
+                  <label class="service-checkbox-label">
+                    <input type="checkbox" name="services" value="Hair Wash"> Hair Wash
+                  </label>
+                  <label class="service-checkbox-label">
+                    <input type="checkbox" name="services" value="Ponytail"> Ponytail
+                  </label>
+                  <label class="service-checkbox-label">
+                    <input type="checkbox" name="services" value="Bantu Knots"> Bantu Knots
+                  </label>
+                  <label class="service-checkbox-label">
+                    <input type="checkbox" name="services" value="Invisible Locs"> Invisible Locs
+                  </label>
+                </div>
+                <p id="serviceError" style="color:#e05c7a;font-size:0.8rem;margin-top:6px;display:none;">Please select at least one service.</p>
               </div>
+
               <div class="col-md-6">
                 <label class="form-label">Preferred Date</label>
                 <input type="date" class="form-control" id="bookDate" required>
@@ -657,13 +918,35 @@ animation: glow 2s infinite alternate;
                   <option>5:00 PM</option>
                 </select>
               </div>
+
+              <!-- PROOF OF PAYMENT UPLOAD -->
+              <div class="col-12">
+                <label class="form-label">
+                  Proof of Payment
+                  <span style="color:var(--text-muted);font-size:0.75rem;text-transform:none;letter-spacing:0"> — upload your R70 booking fee screenshot</span>
+                </label>
+                <div class="upload-zone" id="uploadZone">
+                  <input type="file" id="proofFile" accept="image/*,.pdf" onchange="handleFileSelect(this)">
+                  <i class="bi bi-cloud-arrow-up"></i>
+                  <p>Drop your screenshot here, or <strong style="color:var(--pink)">browse</strong></p>
+                  <p class="upload-hint">Accepts JPG, PNG, PDF — max 10MB</p>
+                </div>
+                <div id="filePreview" style="display:none" class="upload-preview">
+                  <i class="bi bi-file-earmark-image"></i>
+                  <span id="fileName">—</span>
+                  <span class="remove-file" onclick="removeFile()" title="Remove"><i class="bi bi-x-circle"></i></span>
+                </div>
+              </div>
+
               <div class="col-12">
                 <label class="form-label">Additional Notes</label>
                 <textarea class="form-control" id="notes" rows="3" placeholder="Any special requests or concerns..."></textarea>
               </div>
+
               <div class="col-12">
-                <button type="submit" class="btn btn-pink w-100 py-3">Confirm Appointment</button>
+                <button type="submit" class="btn btn-pink w-100 py-3">Confirm Appointment via WhatsApp</button>
               </div>
+
             </div>
           </form>
         </div>
@@ -686,8 +969,8 @@ animation: glow 2s infinite alternate;
           <div class="contact-icon"><i class="bi bi-geo-alt-fill"></i></div>
           <div>
             <h6>Location</h6>
-            <p>42 1050 Luvuyo street Phumula roodekop</p>
-<p>Available for house calls around Pretoria,with a <em>R150</em> NON-REFUNDABLE Booking FEE </p>
+            <p>42 1050 Luvuyo street Phumula Roodekop</p>
+            <p>Available for house calls around Pretoria, with a <em>R150</em> NON-REFUNDABLE Booking Fee</p>
           </div>
         </div>
         <div class="contact-info-item">
@@ -714,7 +997,7 @@ animation: glow 2s infinite alternate;
       <div class="col-lg-7">
         <div class="booking-form-wrap" style="min-height:380px;display:flex;align-items:center;justify-content:center;flex-direction:column;">
           <i class="bi bi-map" style="font-size:4rem;color:var(--pink);opacity:0.4;"></i>
-          <p style="color:var(--text-muted);font-size:0.9rem;letter-spacing:1px;">1050 Luvuyo street Phumula roodekop</p>
+          <p style="color:var(--text-muted);font-size:0.9rem;letter-spacing:1px;">1050 Luvuyo street Phumula Roodekop</p>
           <a href="https://maps.google.com" target="_blank" class="btn btn-outline-pink mt-3">Open in Google Maps</a>
         </div>
       </div>
@@ -729,7 +1012,7 @@ animation: glow 2s infinite alternate;
 
 <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.2/js/bootstrap.bundle.min.js"></script>
 <script>
-  // Section routing
+  /* ── Section routing ── */
   function showSection(id) {
     document.querySelectorAll('.page-section').forEach(s => s.classList.remove('active'));
     document.getElementById(id).classList.add('active');
@@ -737,114 +1020,163 @@ animation: glow 2s infinite alternate;
     const link = document.querySelector(`.nav-link[onclick*="${id}"]`);
     if (link) link.classList.add('active');
     window.scrollTo({ top: 0, behavior: 'smooth' });
-    // Close mobile nav
     const nav = document.getElementById('navMenu');
-    if (nav.classList.contains('show')) {
-      bootstrap.Collapse.getInstance(nav)?.hide();
-    }
+    if (nav.classList.contains('show')) bootstrap.Collapse.getInstance(nav)?.hide();
   }
 
-  // Set min date for booking
+  /* ── Gallery: horizontal scroll ── */
+  function scrollGallery(btn, dir) {
+    const track = btn.closest('.gallery-track-wrap').querySelector('.gallery-track');
+    track.scrollBy({ left: dir * 280, behavior: 'smooth' });
+  }
+
+  /* ── Lightbox ── */
+  function openLightbox(src, caption) {
+    document.getElementById('lightboxImg').src = src;
+    document.getElementById('lightboxCaption').textContent = caption;
+    document.getElementById('lightbox').classList.add('open');
+    document.body.style.overflow = 'hidden';
+  }
+  function closeLightbox(e) {
+    if (e && e.target !== document.getElementById('lightbox') && !e.target.classList.contains('lightbox-close')) return;
+    document.getElementById('lightbox').classList.remove('open');
+    document.body.style.overflow = '';
+  }
+  document.addEventListener('keydown', e => { if (e.key === 'Escape') closeLightbox({}); });
+
+  /* ── Hide makeup placeholder if real images load ── */
+  document.querySelectorAll('#makeupPlaceholder').forEach(p => {
+    const slides = p.closest('.gallery-track').querySelectorAll('.gallery-slide:not(#makeupPlaceholder)');
+    let loaded = 0;
+    slides.forEach(slide => {
+      const img = slide.querySelector('img');
+      if (img && img.style.display !== 'none') loaded++;
+    });
+    if (loaded > 0) p.style.display = 'none';
+  });
+
+  /* ── Min date ── */
   const dateInput = document.getElementById('bookDate');
-  if (dateInput) {
-    const today = new Date().toISOString().split('T')[0];
-    dateInput.min = today;
+  if (dateInput) dateInput.min = new Date().toISOString().split('T')[0];
+
+  /* ── Proof of payment file handling ── */
+  function handleFileSelect(input) {
+    const file = input.files[0];
+    if (!file) return;
+    if (file.size > 10 * 1024 * 1024) {
+      alert('File is too large. Please upload a file under 10MB.');
+      input.value = '';
+      return;
+    }
+    document.getElementById('fileName').textContent = file.name;
+    document.getElementById('filePreview').style.display = 'flex';
+  }
+  function removeFile() {
+    document.getElementById('proofFile').value = '';
+    document.getElementById('filePreview').style.display = 'none';
+    document.getElementById('fileName').textContent = '—';
   }
 
-  // Booking form submission
+  // Drag-over styling
+  const uploadZone = document.getElementById('uploadZone');
+  uploadZone.addEventListener('dragover', e => { e.preventDefault(); uploadZone.classList.add('drag-over'); });
+  uploadZone.addEventListener('dragleave', () => uploadZone.classList.remove('drag-over'));
+  uploadZone.addEventListener('drop', e => {
+    e.preventDefault();
+    uploadZone.classList.remove('drag-over');
+    const files = e.dataTransfer.files;
+    if (files.length) {
+      document.getElementById('proofFile').files = files;
+      handleFileSelect(document.getElementById('proofFile'));
+    }
+  });
+
+  /* ── Booking form ── */
   document.getElementById('bookingForm').addEventListener('submit', function(e) {
     e.preventDefault();
-    
-    const firstName = document.getElementById('firstName').value;
-    const lastName = document.getElementById('lastName').value;
-    const phone = document.getElementById('phone').value;
-    const service = document.getElementById('service').value;
-    const date = document.getElementById('bookDate').value;
-    const time = document.getElementById('bookTime').value;
-    const notes = document.getElementById('notes').value;
 
-    const message = `
-🌸 *New Hair Appointment Booking* 🌸
+    // Collect selected services
+    const checked = [...document.querySelectorAll('input[name="services"]:checked')];
+    if (checked.length === 0) {
+      document.getElementById('serviceError').style.display = 'block';
+      return;
+    }
+    document.getElementById('serviceError').style.display = 'none';
+
+    const firstName = document.getElementById('firstName').value;
+    const lastName  = document.getElementById('lastName').value;
+    const phone     = document.getElementById('phone').value;
+    const services  = checked.map(c => c.value).join(', ');
+    const date      = document.getElementById('bookDate').value;
+    const time      = document.getElementById('bookTime').value;
+    const notes     = document.getElementById('notes').value;
+    const hasProof  = document.getElementById('proofFile').files.length > 0;
+    const proofName = hasProof ? document.getElementById('proofFile').files[0].name : 'Not uploaded';
+
+    const message = `🌸 *New Appointment Booking* 🌸
 
 👤 Name: ${firstName} ${lastName}
 📞 Phone: ${phone}
-💇 Service: ${service}
+💇 Services: ${services}
 📅 Date: ${date}
 ⏰ Time: ${time}
+💳 Proof of Payment: ${hasProof ? `✅ ${proofName} (please send separately)` : '❌ Not uploaded yet'}
 📝 Notes: ${notes || 'None'}
 
-Thank you!
-    `;
+Thank you for booking with Hope's Magic Hair! 🩷`;
 
     const whatsappNumber = '27728562814';
     const whatsappURL = `https://wa.me/${whatsappNumber}?text=${encodeURIComponent(message)}`;
     window.open(whatsappURL, '_blank');
+
+    // If proof file was selected, remind user to send it
+    if (hasProof) {
+      setTimeout(() => alert('📎 Remember to send your proof of payment image in the WhatsApp chat!'), 800);
+    }
   });
 
-  // Reviews functionality
+  /* ── Reviews ── */
   let selectedRating = 0;
   const stars = document.querySelectorAll('.star-rating span');
-  const reviewForm = document.getElementById('reviewForm');
-  const reviewsContainer = document.getElementById('reviewsContainer');
-
-  // Star selection
   stars.forEach(star => {
     star.addEventListener('click', () => {
       selectedRating = parseInt(star.getAttribute('data-value'));
       stars.forEach(s => s.classList.remove('active'));
-      for (let i = 0; i < selectedRating; i++) {
-        stars[i].classList.add('active');
-      }
+      for (let i = 0; i < selectedRating; i++) stars[i].classList.add('active');
     });
   });
 
-  // Load saved reviews
-  document.addEventListener('DOMContentLoaded', loadReviews);
+  document.addEventListener('DOMContentLoaded', () => {
+    (JSON.parse(localStorage.getItem('salonReviews')) || []).forEach(addReviewToPage);
+  });
 
-  reviewForm.addEventListener('submit', function(e) {
+  document.getElementById('reviewForm').addEventListener('submit', function(e) {
     e.preventDefault();
-
-    const name = document.getElementById('reviewName').value;
-    const text = document.getElementById('reviewText').value;
-
-    if (selectedRating === 0) {
-      alert('Please select a rating');
-      return;
-    }
-
-    const review = { name, text, rating: selectedRating };
-    saveReview(review);
+    if (selectedRating === 0) { alert('Please select a rating'); return; }
+    const review = {
+      name: document.getElementById('reviewName').value,
+      text: document.getElementById('reviewText').value,
+      rating: selectedRating
+    };
+    const reviews = JSON.parse(localStorage.getItem('salonReviews')) || [];
+    reviews.push(review);
+    localStorage.setItem('salonReviews', JSON.stringify(reviews));
     addReviewToPage(review);
-
-    reviewForm.reset();
+    this.reset();
     selectedRating = 0;
     stars.forEach(s => s.classList.remove('active'));
   });
 
-  function saveReview(review) {
-    let reviews = JSON.parse(localStorage.getItem('reviews')) || [];
-    reviews.push(review);
-    localStorage.setItem('reviews', JSON.stringify(reviews));
-  }
-
-  function loadReviews() {
-    let reviews = JSON.parse(localStorage.getItem('reviews')) || [];
-    reviews.forEach(addReviewToPage);
-  }
-
   function addReviewToPage(review) {
     const col = document.createElement('div');
     col.className = 'col-md-6';
-
     col.innerHTML = `
       <div class="review-card">
         <h6>${review.name}</h6>
         <div class="review-stars">${'★'.repeat(review.rating)}</div>
         <p class="mt-2">${review.text}</p>
-      </div>
-    `;
-
-    reviewsContainer.appendChild(col);
+      </div>`;
+    document.getElementById('reviewsContainer').appendChild(col);
   }
 </script>
 </body>
